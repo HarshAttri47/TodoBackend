@@ -1,0 +1,23 @@
+# render.yaml
+services:
+  - type: web
+    name: todoflow-backend-harsh
+    env: java
+    repo: https://github.com/HarshAttri47/TodoBackend
+    branch: master
+    rootDir: ./
+    buildCommand: ./mvnw clean install -DskipTests
+    startCommand: java -jar target/TodoBackend-0.0.1-SNAPSHOT.jar
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d2oo32vfte5s738hutkg-a/todoflow_db_4n1z
+      - key: SPRING_DATASOURCE_USERNAME
+        value: todoflow_db_4n1z_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: fULX63sLOFKRWSpnbpaxSfk0zwukBwhx
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: JAVA_VERSION
+        value: "22"
